@@ -1,0 +1,317 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+span {
+  font-size: inherit;
+  color: inherit;
+}
+
+div {
+  display: block;
+}
+
+/* 공통 리소스 */
+.container {
+  min-width: 1200px;
+  margin: auto;
+}
+
+input {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+
+i {
+  border: solid rgba(0, 0, 0, 0.42);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* 보이는 곳 */
+.main .header {
+  background: white;
+  height: 60px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  border-bottom: 1px solid #cccccc;
+}
+
+.main .header .container {
+  height: 100%;
+}
+
+.main .header .container .logo {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  margin: auto;
+  width: 32px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.main .header .container .logo img {
+  width: 100%;
+}
+
+.main .header .container .gnb-menu-list {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 32px;
+  margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 14px;
+}
+
+.main .header .container .gnb-menu-list .gnb-menu {
+  display: inline-block;
+  margin-right: 24px;
+  cursor: pointer;
+  padding-top: 4px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  font-size: inherit;
+}
+
+.main .main-body {
+  padding: 60px 10px 300px;
+}
+
+.main .main-body .container h1 {
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 12px;
+}
+
+.main .main-body .container .body {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: normal;
+}
+
+.main .main-body .container .mt {
+  margin-top: 40px;
+  vertical-align: top;
+}
+
+.main .main-body .container .mt .main-input {
+  width: 200px;
+  height: 32px;
+  border: 1px solid #ff5252;
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main .main-body .container .mt .main-button {
+  height: 32px;
+  outline: none;
+  border: 1px solid transparent;
+  background: #ff5252;
+  vertical-align: top;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 편집부분 */
+.edit-box {
+  position: fixed;
+  width: 100%;
+  height: 260px;
+  bottom: 0;
+  background: white;
+  -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.edit-box .container {
+  width: 1200px;
+}
+
+.edit-box .container .edit-hero {
+  padding: 24px 0;
+}
+
+.edit-box .container .edit-hero .edit-menu-list {
+  width: 100%;
+  display: block;
+}
+
+.edit-box .container .edit-hero .edit-menu-list .edit-menu {
+  display: inline-block;
+  font-size: 21px;
+  margin-right: 32px;
+  color: rgba(0, 0, 0, 0.42);
+  cursor: pointer;
+}
+
+.edit-box .container .edit-hero .edit-menu-list .active {
+  color: #ff5252;
+  font-weight: 700;
+}
+
+.edit-box .container .edit-hero .edit-control {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+
+.edit-box .container .edit-hero .edit-control .btn-control {
+  padding: 10px 16px;
+  background: #ff5252;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  margin-right: 8px;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+  width: 120px;
+  height: 40px;
+}
+
+.edit-box .container .edit-hero .edit-control .btn-control:hover {
+  background: #fa4343;
+}
+
+.edit-box .container .edit-hero .edit-control .btn-show {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 16px;
+}
+
+.edit-box .container .edit-body .edit-contents-list .edit-contents {
+  font-size: 0;
+  display: none;
+}
+
+.edit-box .container .edit-body .edit-contents-list .edit-contents .form-box {
+  display: inline-block;
+  width: calc(25% - 20px);
+  margin-right: 20px;
+  margin-bottom: 32px;
+}
+
+.edit-box .container .edit-body .edit-contents-list .edit-contents .form-box .label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.edit-box .container .edit-body .edit-contents-list .edit-contents .form-box .text-field {
+  width: 250px;
+  height: 32px;
+  outline: none;
+  border: 1px solid #888888;
+  font-size: 14px;
+}
+
+.edit-box .container .edit-body .edit-contents-list .edit-contents .form-box .select {
+  height: 32px;
+  width: 250px;
+  outline: none;
+  border: 1px solid #888888;
+  background: white;
+  font-size: 13px;
+}
+
+.edit-box .container .edit-body .edit-contents-list .show {
+  display: block;
+}
+/*# sourceMappingURL=style.css.map */

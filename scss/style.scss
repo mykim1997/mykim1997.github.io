@@ -1,0 +1,274 @@
+$color-main:#ff5252;
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    vertical-align:top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing:border-box;
+    position: relative;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+text-decoration: none;
+ color:inherit;
+ display: inline-block;
+ &:hover{
+     text-decoration: none;
+ }
+}
+
+span{
+    font-size: inherit;
+    color:inherit;
+}
+
+div{
+ display:block;
+} 
+
+/* 공통 리소스 */
+.container{
+    min-width: 1200px;
+    margin: auto;
+}
+input{
+    outline: none;
+    &::-webkit-input-placeholder{
+        color:rgba(0,0,0,0.42);
+    }
+}
+i {
+    border: solid rgba(0,0,0,0.42);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+/* 보이는 곳 */
+.main{
+    .header {
+        background: white;
+        height: 60px;
+        transition: all 0.4s;
+        border-bottom:1px solid #cccccc;
+        .container{
+            height: 100%;
+            .logo {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 24px;
+                margin: auto;
+                width: 32px;
+                height: fit-content;
+                transition: all 0.4s;
+                img {
+                    width: 100%;
+                }
+            }
+            .gnb-menu-list {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 32px;
+                margin: auto;
+                height: fit-content;
+                font-size:14px;
+                .gnb-menu {
+                    display: inline-block;
+                    margin-right: 24px;
+                    cursor: pointer;
+                    padding-top: 4px;
+                    transition: all 0.4s;
+                    font-size:inherit;
+                }
+            }
+        }
+    }
+    .main-body{
+        padding:60px 10px 300px;
+        .container{
+            h1{
+                font-size:40px;
+                color:rgba(0,0,0,0.87);
+                margin-bottom:12px;
+            }
+            .body{
+                font-size:16px;
+                color:rgba(0,0,0,0.72);
+                line-height: normal;
+            }
+            .mt{
+                margin-top:40px;
+                vertical-align: top;
+                .main-input{
+                    width: 200px;
+                    height: 32px;
+                    border:1px solid $color-main;
+                    font-size:14px;
+                    box-sizing: border-box;
+                }
+                .main-button{
+                    height:32px;
+                    outline: none;
+                    border:1px solid transparent;
+                    background: $color-main;
+                    vertical-align: top;
+                    color:white;
+                    font-size:13px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+/* 편집부분 */
+.edit-box{
+    position: fixed;
+    width:100%;
+    height: 260px;
+    bottom:0;
+    background: white;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.25);
+    transition: all 0.3s ease-in;
+    .container{
+        width:1200px;
+        .edit-hero{
+            padding:24px 0;
+            .edit-menu-list {
+                width: 100%;
+                display: block;
+                .edit-menu {
+                    display: inline-block;
+                    font-size:21px;
+                    margin-right:32px;
+                    color:rgba(0,0,0,0.42);
+                    cursor: pointer;
+                }
+                .active{
+                    color:$color-main;
+                    font-weight: 700;
+                }
+            }
+            .edit-control{
+                position: absolute;
+                right:0;
+                top:10px;
+                .btn-control{
+                    padding:10px 16px;
+                    background: $color-main;
+                    border:none;
+                    outline:none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    color:white;
+                    font-size:14px;
+                    margin-right:8px;
+                    overflow: hidden;
+                    user-select: none;
+                    transition: background 0.3s;
+                    width:120px;
+                    height:40px;
+                    &:hover{
+                        background: #fa4343;
+                    }
+                }
+                .btn-show{
+                    background: transparent;
+                    border:none;
+                    outline:none;
+                    cursor: pointer;
+                    padding:10px 16px;
+                }
+            }
+        }
+        .edit-body{
+            .edit-contents-list{
+                .edit-contents{
+                    font-size:0;
+                    display: none;
+                    .form-box{
+                        display: inline-block;
+                        width: calc(25% - 20px);
+                        margin-right:20px;
+                        margin-bottom:32px;
+                        .label{
+                            font-size:14px;
+                            margin-bottom:8px;
+                        }
+                        .text-field{
+                            width: 250px;
+                            height:32px;
+                            outline:none;
+                            border:1px solid #888888;
+                            font-size:14px;
+                        }
+                        .select{
+                            height:32px;
+                            width: 250px;
+                            outline: none;
+                            border:1px solid #888888;
+                            background: white;
+                            font-size:13px;
+                        }
+                    }
+                }
+                .show{
+                    display: block;
+                }
+            }
+        }
+    }
+}
