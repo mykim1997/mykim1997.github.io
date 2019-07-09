@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var hamburger = document.getElementsByClassName('hamburger')[0];
+        var gnb = document.getElementsByClassName('gnb')[0];
+        var navigation = document.getElementsByClassName('navigation')[0];
+        var logoBlack = document.getElementsByClassName('logo-black')[0];
+        var logoWhite = document.getElementsByClassName('logo-white')[0];
+
+        //햄버거 클릭시 네비 토글
+        hamburger.addEventListener('click',function(){
+
+            if(this.classList.contains('open')){
+                //hamburger
+                this.classList.remove('open');
+                //gnb bg
+                gnb.classList.remove('gnb-active');
+                //logo toggle
+                logoBlack.classList.add('show');
+                logoWhite.classList.remove('show');
+                //navigation
+                navigation.classList.remove('navi-on');
+            }else{
+                //hamburger
+                this.classList.add('open');
+                //gnb bg
+                gnb.classList.add('gnb-active');
+                //logo toggle
+                logoBlack.classList.remove('show');
+                logoWhite.classList.add('show');
+                //navigation
+                navigation.classList.add('navi-on');
+            }
+
+        });
+
+        //컨테이너 스크롤링
+        var main = document.getElementsByTagName('main')[0];
+        var container = document.getElementsByClassName('container')[0];
+        container.addEventListener('mousewheel',function(e){
+            console.log(container.scrollLeft);
+        })
+
+    });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="gnb">
+                <a href="" class="logo-box">
+                    <h1 class="a11y">용산집에 오신걸 환영합니다.</h1>
+                    <img src="img/Logo/logo-typo-black.png" alt="" class="logo-black show">
+                    <img src="img/Logo/logo-typo-white.png" alt="" class="logo-white">
+                </a>
+                <div class="hamburger">
+                    <span></span>
+                </div>
+            </div>
+            <nav class="navigation">
+                <ul class="menu-list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">사람들</a></li>
+                    <li><a href="#">포트폴리오</a></li>
+                    <li><a href="#">프로젝트 가이드</a></li>
+                    <li><a href="#">기술목록</a></li>
+                    <li><a href="#">의뢰하기</a></li>
+                </ul>
+                <ul class="sub-list">
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">사원집</a></li>
+                    <li><a href="#">기술 블로그</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+                lo
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quia veritatis, error pariatur aut similique!
+                Neque ipsum officiis exercitationem debitis, quia possimus consequatur? Reiciendis laborum quas beatae ad quos
+                nobis.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem incidunt eligendi perferendis. Maiores sapiente,
+                inventore, quibusdam nostrum nobis obcaecati voluptatibus accusantium eos dicta labore modi vero quisquam. Enim,
+                incidunt sed.
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
