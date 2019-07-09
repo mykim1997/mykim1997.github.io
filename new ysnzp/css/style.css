@@ -1,6 +1,6 @@
 /* variable*/
 /* reset */
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700&display=swap&subset=korean");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -89,11 +89,39 @@ body {
   font-size: 0;
 }
 
+.button-a {
+  padding: 18px 40px;
+  background: #181818;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  font-size: 21px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.button-b {
+  border: none;
+  outline: none;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  padding: 12px 24px;
+  background: transparent;
+  color: white;
+  font-weight: 700;
+  font-size: 21px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 /* header - gnb, navigation */
 header {
   display: inline-block;
   font-size: 0;
-  min-height: 768px;
+  min-height: 800px;
   height: 100vh;
 }
 
@@ -256,9 +284,444 @@ main {
 }
 
 main .container {
-  background: paleturquoise;
   font-size: 16px;
+  min-width: 1024px;
+  height: 100%;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  font-size: 0;
+  /* main page*/
+}
+
+main .container > div {
+  display: inline-block;
+  height: 100%;
+}
+
+main .container .hero {
+  min-width: 1200px;
+  max-width: 1600px;
+  width: 80%;
+  height: 100%;
+  padding: 80px;
+}
+
+main .container .hero h2 {
+  font-size: 140px;
+  line-height: 140px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+main .container .hero .caption {
+  font-size: 24px;
+  letter-spacing: 4px;
+  margin-top: 40px;
+  line-height: normal;
+  font-weight: 400;
+}
+
+main .container .hero .button {
+  margin-top: 72px;
+}
+
+main .container .hero .scroll-action {
+  position: absolute;
+  right: 0;
+  bottom: 80px;
+}
+
+main .container .hero .scroll-action p {
+  font-size: 24px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+main .container .hero .scroll-action .bar {
+  width: 48px;
+  height: 3px;
+  margin-left: 32px;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+main .container .hero .scroll-action .bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: black;
+  -webkit-animation-name: scrollMe;
+          animation-name: scrollMe;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+main .container .portfolio-list {
+  margin-left: 80px;
+  font-size: 0;
+  min-height: 800px;
+}
+
+main .container .portfolio-list .portfolio {
+  width: 600px;
+  height: 100%;
+  padding: 80px 50px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+main .container .portfolio-list .portfolio .port-num {
+  text-transform: uppercase;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 60px;
+  margin-left: 30px;
+}
+
+main .container .portfolio-list .portfolio .port-num::after {
+  content: '';
+  position: absolute;
+  background: #5a7fb3;
+  width: 64px;
+  height: 14px;
+  left: -30px;
+  bottom: -5px;
+  z-index: -1;
+}
+
+main .container .portfolio-list .portfolio .port-name {
+  font-size: 80px;
+  line-height: 80px;
+  color: white;
+  margin-top: 40px;
+  font-weight: 900;
+}
+
+main .container .portfolio-list .portfolio .button {
+  position: absolute;
+  width: 300px;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+main .container .portfolio-list .portfolio .port-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -3;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  height: 100%;
+}
+
+main .container .portfolio-list .portfolio::before {
+  content: '';
+  position: absolute;
   width: 100%;
   height: 100%;
-  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.45);
+  top: 0;
+  left: 0;
+}
+
+main .container .portfolio-list .portfolio:hover .port-bg {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+main .container .portfolio-list .port-03 .port-bg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .container .service-list {
+  margin-left: 200px;
+}
+
+main .container .service-list .service {
+  display: inline-block;
+  padding: 80px 0;
+  margin-right: 240px;
+  height: 100%;
+}
+
+main .container .service-list .service .image {
+  overflow: hidden;
+}
+
+main .container .service-list .service .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .container .service-list .service .image::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+main .container .service-list .service .text-box .caption {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+main .container .service-list .service .text-box .service-title {
+  margin-top: 12px;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+main .container .service-list .service .text-box .service-text {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+main .container .service-list .service-1 .image {
+  margin-top: 80px;
+  width: 600px;
+  height: 450px;
+}
+
+main .container .service-list .service-1 .text-box {
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+main .container .service-list .service-2 .image {
+  margin-top: 130px;
+  margin-left: 70px;
+  width: 400px;
+  height: 300px;
+}
+
+main .container .service-list .service-2 .text-box {
+  margin-top: 130px;
+}
+
+main .container .service-list .service-3 .image {
+  margin-top: 80px;
+  width: 600px;
+  height: 450px;
+}
+
+main .container .service-list .service-3 .text-box {
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+main .container .process-list {
+  width: 500px;
+  height: 100%;
+}
+
+main .container .process-list .process {
+  width: 100%;
+  height: 50%;
+  padding: 60px 50px;
+  text-align: center;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+main .container .process-list .process .proc-title {
+  font-size: 48px;
+  color: white;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+main .container .process-list .process .proc-caption {
+  margin-top: 24px;
+  font-size: 18px;
+  color: white;
+  line-height: 32px;
+  white-space: normal;
+  font-weight: 400;
+}
+
+main .container .process-list .process .proc-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -2;
+  top: 0;
+  left: 0;
+}
+
+main .container .process-list .process .button {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  width: 300px;
+  margin: auto;
+}
+
+main .container .process-list .process .button:hover.proc-bg {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+main .container .process-list .process::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+main .container .footer-wrap {
+  width: 510px;
+  height: 100%;
+}
+
+main .container .footer-wrap .footer {
+  width: 100%;
+  height: calc(100% - 150px);
+  background: #181818;
+  padding: 80px;
+  text-align: right;
+  min-height: 780px;
+}
+
+main .container .footer-wrap .footer .foot-title {
+  font-size: 60px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin-top: 60px;
+}
+
+main .container .footer-wrap .footer .foot-text {
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  margin-top: 24px;
+  white-space: normal;
+  font-weight: 400;
+}
+
+main .container .footer-wrap .footer .button {
+  margin-top: 56px;
+  width: 250px;
+}
+
+main .container .footer-wrap .footer .foot-info-box {
+  position: absolute;
+  width: calc(100% - 160px);
+  bottom: 80px;
+  right: 80px;
+}
+
+main .container .footer-wrap .footer .foot-info-box .foot-info {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.87);
+  margin-bottom: 12px;
+}
+
+main .container .footer-wrap .footer .foot-info-box .foot-info .bar {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: white;
+  margin: 4px 12px;
+}
+
+main .container .footer-wrap .turn-back {
+  width: 100%;
+  height: 150px;
+  background: white;
+  padding: 60px;
+  text-align: right;
+}
+
+main .container .footer-wrap .turn-back .bar {
+  width: 48px;
+  height: 3px;
+  margin-right: 32px;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+main .container .footer-wrap .turn-back .bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: black;
+  -webkit-animation-name: turnBack;
+          animation-name: turnBack;
+  -webkit-animation-duration: 1.8s;
+          animation-duration: 1.8s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+main .container .footer-wrap .turn-back p {
+  font-size: 24px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: 400;
+}
+
+@-webkit-keyframes scrollMe {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 48px;
+  }
+}
+
+@keyframes scrollMe {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 48px;
+  }
+}
+
+@-webkit-keyframes turnBack {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 48px;
+  }
+}
+
+@keyframes turnBack {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 48px;
+  }
 }

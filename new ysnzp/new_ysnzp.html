@@ -44,9 +44,68 @@
         //컨테이너 스크롤링
         var main = document.getElementsByTagName('main')[0];
         var container = document.getElementsByClassName('container')[0];
-        container.addEventListener('mousewheel',function(e){
-            console.log(container.scrollLeft);
+        container.style.left = "0%";
+
+        var didScroll;
+        var howMuchScroll=15;
+        var scrollDirection;
+        var maxScroll;
+
+        checkMaxScroll();
+
+        function checkMaxScroll(){
+            if (window.matchMedia("screen and (min-width: 1280px)").matches) {
+                maxScroll = 456;
+            }
+            if (window.matchMedia("screen and (min-width: 1440px)").matches) {
+                // console.log("1440");
+                maxScroll = 391;
+            }
+            if (window.matchMedia("screen and (min-width: 1920px)").matches) {
+                // console.log("1920");
+                maxScroll = 278;
+            }
+        }
+
+
+
+        main.addEventListener('mousewheel',function(e){
+
+            didScroll = true;
+            // console.log(container.scrollLeft); //ok
+
+            // console.log(this.scrollY); //undefind
+            // console.log(e.deltaY); //위아래 방향 내리면 100 올리면 -100
+            // console.log(this.scrollTop); //0
+            if(e.deltaY>0){
+                scrollDirection = 'down';
+            }else if(e.deltaY<0){
+                scrollDirection = 'up';
+            }
+            // howMuchScroll++;
         })
+
+        setInterval(function(){
+            if(didScroll){
+                hasScrolled();
+                didScroll=false;
+            }
+        },50);
+
+        function hasScrolled(){
+            var x = parseInt(container.style.left.replace(/[^0-9]/g, ""));
+            var move;
+            if(scrollDirection=='down'){
+                move = x+howMuchScroll;
+                if(move>maxScroll){
+                    move = maxScroll;
+                }
+                container.style.left = "-" + move + "%";
+            }else if(scrollDirection=='up'){
+                move = x-howMuchScroll;
+                container.style.left = "-" + move + "%";
+            }
+        }
 
     });
     </script>
@@ -82,14 +141,114 @@
         </header>
         <main>
             <div class="container">
-                lo
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quia veritatis, error pariatur aut similique!
-                Neque ipsum officiis exercitationem debitis, quia possimus consequatur? Reiciendis laborum quas beatae ad quos
-                nobis.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem incidunt eligendi perferendis. Maiores sapiente,
-                inventore, quibusdam nostrum nobis obcaecati voluptatibus accusantium eos dicta labore modi vero quisquam. Enim,
-                incidunt sed.
+                <div class="hero">
+                    <h2>Hardware<br>wears<br>software</h2>
+                    <p class="caption">하드웨어와 소프트웨어<br>모든 면에서 탁월한 용산집</p>
+                    <button class="button button-a">용산집 알아보기</button>
+                    <div class="scroll-action">
+                        <p>scroll</p>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <div class="portfolio-list">
+                    <div class="portfolio">
+                        <h3 class="port-num">portfolio #1</h3>
+                        <h2 class="port-name">Asia<br>Artist<br>Awards</h2>
+                        <button class="button button-b">Learn More</button>
+                        <img src="img/img-contents-01.jpg" alt="" class="port-bg">
+                    </div>
+                    <div class="portfolio">
+                        <h3 class="port-num">portfolio #2</h3>
+                        <h2 class="port-name">Waplace</h2>
+                        <button class="button button-b">Learn More</button>
+                        <img src="img/img-contents-02.png" alt="" class="port-bg">
+                    </div>
+                    <div class="portfolio port-03">
+                        <h3 class="port-num">portfolio #3</h3>
+                        <h2 class="port-name">Sleepy<br>Trunk</h2>
+                        <button class="button button-b">Learn More</button>
+                        <img src="img/img-contents-03.png" alt="" class="port-bg">
+                    </div>
 
+                </div>
+                <div class="service-list">
+                    <div class="service service-1">
+                        <div class="image">
+                           <img src="img/img-contents-04.jpg" alt="">
+                        </div>
+                        <div class="text-box">
+                            <p class="caption">전문 서비스 분야 #1</p>
+                            <p class="service-title">E-Commerce</p>
+                            <p class="service-text">결제모듈이 필요한<br>
+                            모든 형태의 반응형 웹 / 모바일 앱</p>
+                        </div>
+                    </div>
+                    <div class="service service-2">
+
+                        <div class="text-box">
+                            <p class="caption">전문 서비스 분야 #2</p>
+                            <p class="service-title">Application</p>
+                            <p class="service-text">다중 플랫폼으로 서비스하는<br>
+                            모든 종류의 Restful API 기반 어플리케이션</p>
+                        </div>
+                        <div class="image">
+                           <img src="img/img-contents-05.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="service service-3">
+                        <div class="image">
+                           <img src="img/img-contents-06.jpg" alt="">
+                        </div>
+                        <div class="text-box">
+                            <p class="caption">전문 서비스 분야 #3</p>
+                            <p class="service-title">Software</p>
+                            <p class="service-text">임베디드, BLE, 키오스크 등<br>
+                            운영체제 환경에서 사용하는 소프트웨어</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-list">
+                    <div class="process">
+                        <p class="proc-title">프로세스 소개</p>
+                        <p class="proc-caption">
+                            일반적인 에이전시의 의뢰 검토와 다릅니다.<br>
+                            용산집은 고객의 예산과 현황, 요구사항을 종합적으로 검토하여 전문 기능 정의서 수준의 RFP(제안 의뢰서)를 계약 전에 작성합니다.
+                        </p>
+                        <img src="img/bg-main-01.jpg" alt="" class="proc-bg">
+                        <button class="button button-b">Show Process</button>
+                    </div>
+                    <div class="process">
+                        <p class="proc-title">클라이언트를 위한<br>
+                        가이드 제공</p>
+                        <p class="proc-caption">
+                            프로세스가 생소하시다구요?<br>
+                            커뮤니케이션을 위한 교육도 마다하지 않습니다.<br>
+                            클라이언트들이 자주 하는 질문들을 모았습니다.
+                        </p>
+                        <img src="img/bg-main-02.jpg" alt="" class="proc-bg">
+                        <button class="button button-b">Show Process</button>
+                    </div>
+                </div>
+                <div class="footer-wrap">
+                    <div class="footer">
+                        <p class="foot-title">용산집과<br>함께 하세요</p>
+                        <p class="foot-text">
+                            rhoncus a orci. Proin dapibus ex pharetra mauris bibendum, a molestie lacus lobortis. Morbi neque urna, vestibulum eu
+                            turpis vel, venenatis venenatis nisl. Aliquam erat volutpat. Nullam tincidunt diam metus. Donec et mattis sapien.
+                            Pellentesque urna odio, tortor ac, pulvinar dictum lacus.
+                        </p>
+                        <button class="button button-b">용산집에 의뢰하기</button>
+                        <div class="foot-info-box">
+                            <p class="foot-info">서울시 용산구 문배동 3-3 이안용산프리미어 105~108</p>
+                            <p class="foot-info">ask@yongsanzip.com<span class="bar"></span>Tel)1811.7161</p>
+                            <p class="foot-info">Copyright © 2019 Yongsanzip Inc. 모든 권리 보유</p>
+                        </div>
+                    </div>
+                    <div class="turn-back">
+                        <div class="bar"></div>
+                        <p>turn back</p>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
