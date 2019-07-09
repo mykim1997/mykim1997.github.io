@@ -103,6 +103,9 @@
                 container.style.left = "-" + move + "%";
             }else if(scrollDirection=='up'){
                 move = x-howMuchScroll;
+                if(move<0){
+                    move = 0;
+                }
                 container.style.left = "-" + move + "%";
             }
         }
