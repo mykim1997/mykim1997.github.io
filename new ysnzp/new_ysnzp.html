@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,112 +8,115 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var hamburger = document.getElementsByClassName('hamburger')[0];
-        var gnb = document.getElementsByClassName('gnb')[0];
-        var navigation = document.getElementsByClassName('navigation')[0];
-        var logoBlack = document.getElementsByClassName('logo-black')[0];
-        var logoWhite = document.getElementsByClassName('logo-white')[0];
+        document.addEventListener("DOMContentLoaded", function () {
+            var hamburger = document.getElementsByClassName('hamburger')[0];
+            var gnb = document.getElementsByClassName('gnb')[0];
+            var navigation = document.getElementsByClassName('navigation')[0];
+            var logoBlack = document.getElementsByClassName('logo-black')[0];
+            var logoWhite = document.getElementsByClassName('logo-white')[0];
 
-        //햄버거 클릭시 네비 토글
-        hamburger.addEventListener('click',function(){
+            //햄버거 클릭시 네비 토글
+            hamburger.addEventListener('click', function () {
 
-            if(this.classList.contains('open')){
-                //hamburger
-                this.classList.remove('open');
-                //gnb bg
-                gnb.classList.remove('gnb-active');
-                //logo toggle
-                logoBlack.classList.add('show');
-                logoWhite.classList.remove('show');
-                //navigation
-                navigation.classList.remove('navi-on');
-            }else{
-                //hamburger
-                this.classList.add('open');
-                //gnb bg
-                gnb.classList.add('gnb-active');
-                //logo toggle
-                logoBlack.classList.remove('show');
-                logoWhite.classList.add('show');
-                //navigation
-                navigation.classList.add('navi-on');
+                if (this.classList.contains('open')) {
+                    //hamburger
+                    this.classList.remove('open');
+                    //gnb bg
+                    gnb.classList.remove('gnb-active');
+                    //logo toggle
+                    logoBlack.classList.add('show');
+                    logoWhite.classList.remove('show');
+                    //navigation
+                    navigation.classList.remove('navi-on');
+                } else {
+                    //hamburger
+                    this.classList.add('open');
+                    //gnb bg
+                    gnb.classList.add('gnb-active');
+                    //logo toggle
+                    logoBlack.classList.remove('show');
+                    logoWhite.classList.add('show');
+                    //navigation
+                    navigation.classList.add('navi-on');
+                }
+
+            });
+
+            //컨테이너 스크롤링
+            var main = document.getElementsByTagName('main')[0];
+            var container = document.getElementsByClassName('container')[0];
+            container.style.left = "0%";
+
+            var didScroll;
+            var howMuchScroll = 15;
+            var scrollDirection;
+            var maxScroll;
+
+            console.log(container.clientWidth);
+
+            checkMaxScroll();
+
+            function checkMaxScroll() {
+                if (window.matchMedia("screen and (min-width: 1280px)").matches) {
+                    maxScroll = 456;
+                }
+                if (window.matchMedia("screen and (min-width: 1440px)").matches) {
+                    // console.log("1440");
+                    maxScroll = 391;
+                }
+                if (window.matchMedia("screen and (min-width: 1920px)").matches) {
+                    // console.log("1920");
+                    maxScroll = 278;
+                }
+            }
+
+
+
+            main.addEventListener('mousewheel', function (e) {
+
+                didScroll = true;
+                // console.log(container.scrollLeft); //ok
+
+                // console.log(this.scrollY); //undefind
+                // console.log(e.deltaY); //위아래 방향 내리면 100 올리면 -100
+                // console.log(this.scrollTop); //0
+                if (e.deltaY > 0) {
+                    scrollDirection = 'down';
+                } else if (e.deltaY < 0) {
+                    scrollDirection = 'up';
+                }
+                // howMuchScroll++;
+            })
+
+            setInterval(function () {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 50);
+
+            function hasScrolled() {
+                var x = parseInt(container.style.left.replace(/[^0-9]/g, ""));
+                var move;
+                if (scrollDirection == 'down') {
+                    move = x + howMuchScroll;
+                    if (move > maxScroll) {
+                        move = maxScroll;
+                    }
+                    container.style.left = "-" + move + "%";
+                } else if (scrollDirection == 'up') {
+                    move = x - howMuchScroll;
+                    if (move < 0) {
+                        move = 0;
+                    }
+                    container.style.left = "-" + move + "%";
+                }
             }
 
         });
-
-        //컨테이너 스크롤링
-        var main = document.getElementsByTagName('main')[0];
-        var container = document.getElementsByClassName('container')[0];
-        container.style.left = "0%";
-
-        var didScroll;
-        var howMuchScroll=15;
-        var scrollDirection;
-        var maxScroll;
-
-        checkMaxScroll();
-
-        function checkMaxScroll(){
-            if (window.matchMedia("screen and (min-width: 1280px)").matches) {
-                maxScroll = 456;
-            }
-            if (window.matchMedia("screen and (min-width: 1440px)").matches) {
-                // console.log("1440");
-                maxScroll = 391;
-            }
-            if (window.matchMedia("screen and (min-width: 1920px)").matches) {
-                // console.log("1920");
-                maxScroll = 278;
-            }
-        }
-
-
-
-        main.addEventListener('mousewheel',function(e){
-
-            didScroll = true;
-            // console.log(container.scrollLeft); //ok
-
-            // console.log(this.scrollY); //undefind
-            // console.log(e.deltaY); //위아래 방향 내리면 100 올리면 -100
-            // console.log(this.scrollTop); //0
-            if(e.deltaY>0){
-                scrollDirection = 'down';
-            }else if(e.deltaY<0){
-                scrollDirection = 'up';
-            }
-            // howMuchScroll++;
-        })
-
-        setInterval(function(){
-            if(didScroll){
-                hasScrolled();
-                didScroll=false;
-            }
-        },50);
-
-        function hasScrolled(){
-            var x = parseInt(container.style.left.replace(/[^0-9]/g, ""));
-            var move;
-            if(scrollDirection=='down'){
-                move = x+howMuchScroll;
-                if(move>maxScroll){
-                    move = maxScroll;
-                }
-                container.style.left = "-" + move + "%";
-            }else if(scrollDirection=='up'){
-                move = x-howMuchScroll;
-                if(move<0){
-                    move = 0;
-                }
-                container.style.left = "-" + move + "%";
-            }
-        }
-
-    });
     </script>
 </head>
+
 <body>
     <div class="wrapper">
         <header>
@@ -140,6 +144,7 @@
                     <li><a href="#">사원집</a></li>
                     <li><a href="#">기술 블로그</a></li>
                 </ul>
+                <img class="navi-bg" src="img/Logo/logo-metapo-white.png" alt="">
             </nav>
         </header>
         <main>
@@ -177,13 +182,13 @@
                 <div class="service-list">
                     <div class="service service-1">
                         <div class="image">
-                           <img src="img/img-contents-04.jpg" alt="">
+                            <img src="img/img-contents-04.jpg" alt="">
                         </div>
                         <div class="text-box">
                             <p class="caption">전문 서비스 분야 #1</p>
                             <p class="service-title">E-Commerce</p>
                             <p class="service-text">결제모듈이 필요한<br>
-                            모든 형태의 반응형 웹 / 모바일 앱</p>
+                                모든 형태의 반응형 웹 / 모바일 앱</p>
                         </div>
                     </div>
                     <div class="service service-2">
@@ -192,21 +197,21 @@
                             <p class="caption">전문 서비스 분야 #2</p>
                             <p class="service-title">Application</p>
                             <p class="service-text">다중 플랫폼으로 서비스하는<br>
-                            모든 종류의 Restful API 기반 어플리케이션</p>
+                                모든 종류의 Restful API 기반 어플리케이션</p>
                         </div>
                         <div class="image">
-                           <img src="img/img-contents-05.jpg" alt="">
+                            <img src="img/img-contents-05.jpg" alt="">
                         </div>
                     </div>
                     <div class="service service-3">
                         <div class="image">
-                           <img src="img/img-contents-06.jpg" alt="">
+                            <img src="img/img-contents-06.jpg" alt="">
                         </div>
                         <div class="text-box">
                             <p class="caption">전문 서비스 분야 #3</p>
                             <p class="service-title">Software</p>
                             <p class="service-text">임베디드, BLE, 키오스크 등<br>
-                            운영체제 환경에서 사용하는 소프트웨어</p>
+                                운영체제 환경에서 사용하는 소프트웨어</p>
                         </div>
                     </div>
                 </div>
@@ -222,7 +227,7 @@
                     </div>
                     <div class="process">
                         <p class="proc-title">클라이언트를 위한<br>
-                        가이드 제공</p>
+                            가이드 제공</p>
                         <p class="proc-caption">
                             프로세스가 생소하시다구요?<br>
                             커뮤니케이션을 위한 교육도 마다하지 않습니다.<br>
@@ -236,8 +241,10 @@
                     <div class="footer">
                         <p class="foot-title">용산집과<br>함께 하세요</p>
                         <p class="foot-text">
-                            rhoncus a orci. Proin dapibus ex pharetra mauris bibendum, a molestie lacus lobortis. Morbi neque urna, vestibulum eu
-                            turpis vel, venenatis venenatis nisl. Aliquam erat volutpat. Nullam tincidunt diam metus. Donec et mattis sapien.
+                            rhoncus a orci. Proin dapibus ex pharetra mauris bibendum, a molestie lacus lobortis. Morbi
+                            neque urna, vestibulum eu
+                            turpis vel, venenatis venenatis nisl. Aliquam erat volutpat. Nullam tincidunt diam metus.
+                            Donec et mattis sapien.
                             Pellentesque urna odio, tortor ac, pulvinar dictum lacus.
                         </p>
                         <button class="button button-b">용산집에 의뢰하기</button>
@@ -257,4 +264,5 @@
     </div>
 
 </body>
+
 </html>
